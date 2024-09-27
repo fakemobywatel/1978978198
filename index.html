@@ -1,151 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YASS Music</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
+            background-color: #1b1b1b;
             color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 500px;
-            padding: 20px;
+
+        .hero {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(120deg, #1DB954, #191414);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 1.6;
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
             margin-bottom: 20px;
-            color: #ccc;
+            background: linear-gradient(to right, #fff, #000);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: fadeInTitle 2s ease;
         }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            color: #ddd;
+            margin-bottom: 30px;
+            animation: fadeInText 2s ease 0.5s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        .hero a {
+            padding: 15px 30px;
+            background-color: #1DB954;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInButton 2s ease 1s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            text-decoration: none;
+        }
+
+        .hero a:hover {
+            background-color: #fff;
+            color: #1DB954;
+        }
+
+        @keyframes fadeInTitle {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInButton {
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        .content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            color: #bbb;
+            max-width: 800px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
 
         .services {
-            margin: 40px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            padding: 50px 20px;
+            max-width: 1200px;
         }
 
         .service-item {
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateX(-50px);
-            animation: slideIn 1s forwards;
-            animation-delay: 0.5s;
-        }
-
-        .service-item:nth-child(2) {
-            animation-delay: 0.7s;
-        }
-
-        .service-item:nth-child(3) {
-            animation-delay: 0.9s;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        a {
-            color: #fff;
-            text-decoration: none;
-            border: 1px solid #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            position: relative;
             transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        a:hover {
-            background-color: #fff;
-            color: #000;
-            transform: scale(1.05);
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .icon {
-            font-size: 1.2rem;
-            margin-right: 10px;
+        .service-item i {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1DB954;
         }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: #666;
+        .service-item p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
 
-        .socials a {
-            margin: 0 10px;
+        .service-item a {
+            color: #1DB954;
+            font-weight: bold;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .socials a:hover {
+        .service-item a:hover {
+            color: #fff;
+        }
+
+
+        footer {
+            padding: 50px 20px;
+            background-color: #111;
+            color: #666;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .socials a {
+            margin: 0 10px;
+            color: #666;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .socials a:hover {
             color: #1DB954;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
+
+    <div class="hero">
         <h1>YASS Music</h1>
-        <p>Your unstoppable music distributor.</p>
-        <p>We deliver music all over the world.<br>
-        15+ stores (including Spotify, Apple Music, TikTok) express.</p>
-
-        <h2>Quick, safe, hassle-free.</h2>
-        <p>Your rights are protected, you earn 70% from royalties, and everything is fast-paced.</p>
-
-        <div class="services">
-            <div class="service-item">
-                <i class="fas fa-music icon"></i>
-                <p>Would you like to work with us? - <a href="mailto:join@yass.fun">join@yass.fun</a></p>
-                <p>General questions about distribution? - <a href="mailto:distribute@yass.fun">distribute@yass.fun</a></p>
-            </div>
-            <div class="service-item">
-                <i class="fas fa-shield-alt icon"></i>
-                <p>Someone infringing on your copyright? <br> 
-                Contact us - <a href="mailto:copyright@yass.fun">copyright@yass.fun</a><br>
-                *Also available to non-YASS customers for a small fee.</p>
-            </div>
-            <div class="service-item">
-                <i class="fas fa-question-circle icon"></i>
-                <p>General questions? - <a href="mailto:contact@yass.fun">contact@yass.fun</a><br>
-                Support - <a href="mailto:support@yass.fun">support@yass.fun</a></p>
-            </div>
-        </div>
-
-        <div class="socials">
-            <p>Our Instagram: <a href="https://instagram.com/wereyass" target="_blank"><i class="fab fa-instagram"></i> @wereyass</a></p>
-        </div>
-
-        <footer>
-            <p>&copy; 2024 - YASS Music - All rights reserved.</p>
-        </footer>
+        <p>Your unstoppable music distributor. We deliver to 15+ stores worldwide, including Spotify and TikTok.</p>
+        <a href="#contact">Work With Us</a>
     </div>
 
+
+    <div class="content">
+        <h2>Quick, Safe, Hassle-Free</h2>
+        <p>With YASS Music, you retain full control over your music rights. We ensure your music is delivered to all the major platforms quickly and efficiently. You keep 70% of your royalties, and we handle the rest.</p>
+    </div>
+
+
+    <div class="services">
+        <div class="service-item">
+            <i class="fas fa-music"></i>
+            <p>Interested in joining us? Contact us at <a href="mailto:join@yass.fun">join@yass.fun</a></p>
+            <p>Questions about distribution? Reach us at <a href="mailto:distribute@yass.fun">distribute@yass.fun</a></p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-shield-alt"></i>
+            <p>Is someone infringing on your copyright? Contact us at <a href="mailto:copyright@yass.fun">copyright@yass.fun</a>. We also offer copyright protection services to non-YASS customers for a small fee.</p>
+        </div>
+        <div class="service-item">
+            <i class="fas fa-question-circle"></i>
+            <p>Have general questions or need support? Email us at <a href="mailto:contact@yass.fun">contact@yass.fun</a> or <a href="mailto:support@yass.fun">support@yass.fun</a></p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="socials">
+            <a href="https://instagram.com/wereyass" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2024 - YASS Music - All rights reserved.</p>
+    </footer>
+
 </body>
+
 </html>
